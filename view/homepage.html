@@ -1,0 +1,94 @@
+<section class="section hero" id="section-hero">
+  <div class="hero-inner">
+    <h1 class="help-title">What can we help you?</h1>
+    {{search submit=false instant=true class='search search-full'}}
+    <h2 class="help-sub-title">Find anything (How add more accounts? How to change credit card? etc…)</h2>
+  </div>
+</section>
+
+<section class="getting-started">
+  <div class="card">
+    <div class="card-content">
+      <img src="//p5.zdassets.com/hc/theme_assets/1540873/115000078347/getting_started.png">
+
+      <p class="heading">{{dc 'getting_started'}}</p>
+      <p class="detail">Sed posuere consectetur est at lobortis.</p>
+
+      <button class="help-button">See all</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-content">
+      <img src="//p5.zdassets.com/hc/theme_assets/1540873/115000078347/payment_account_setting.png">
+
+      <p class="heading">{{dc 'payment_account_setting'}}</p>
+      <p class="detail">Sed posuere consectetur est at lobortis.</p>
+
+      <button class="help-button">See all</button>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <section class="section knowledge-base">
+    <section class="categories blocks">
+      <ul class="blocks-list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            <li class="blocks-item">
+              <a href='{{url}}' class="blocks-item-link">
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks-item {{#if internal}}blocks-item-internal{{/if}}">
+                <a href='{{url}}' class="blocks-item-link">
+                  <h4 class="blocks-item-title">
+                    {{name}}
+                    {{#if internal}}
+                      <span class="icon-lock" title="{{t 'internal'}}"></span>
+                    {{/if}}
+                  </h4>
+                  <p class="blocks-item-description">{{excerpt description}}</p>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      {{pagination}}
+    </section>
+
+    {{#if promoted_articles}}
+      <section class="articles">
+        <h3>{{t 'promoted_articles'}}</h3>
+        <ul class="article-list promoted-articles">
+          {{#each promoted_articles}}
+            <li class="promoted-articles-item">
+              <a href="{{url}}">
+                {{title}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+  </section>
+
+  {{#if help_center.community_enabled}}
+    <section class="section community">
+      <h2>{{t 'community'}}</h2>
+      {{#link 'community' class='community-link'}}
+        {{t 'join_conversation'}}
+      {{/link}}
+
+      <div class="community-image"></div>
+    </section>
+  {{/if}}
+
+  <section class="section activity">
+    {{recent_activity}}
+  </section>
+</div>
